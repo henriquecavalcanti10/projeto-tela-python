@@ -6,7 +6,7 @@ layout = [
     [sg.Text('Usuário'), sg.Input(key='usuario' ,size=(30,1))],
     [sg.Text('Senha'), sg.Input(key='senha', password_char='*', size=(30,1))],  # criando os layouts da tela
     [sg.Checkbox('Salvar o login')],
-    [sg.Button('Entrar')]
+    [sg.Button('Entrar')] 
 ]
  # janela
 janela = sg.Window('Tela de Login', layout)
