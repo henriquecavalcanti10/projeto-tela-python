@@ -1,20 +1,26 @@
-from PySimpleGUI import PySimpleGUI as sg # importando a bibli
+import PySimpleGUI as sg
 
- # layout
-sg.theme('Reddit') # tema da janela
 layout = [
-    [sg.Text('Usuário'), sg.Input(key='usuario' ,size=(30,1))],
-    [sg.Text('Senha'), sg.Input(key='senha', password_char='*', size=(30,1))],  # criando os layouts da tela
-    [sg.Checkbox('Salvar o login')],
-    [sg.Button('Entrar')] 
+    [sg.Text('Usuário')],
+    [sg.Input(key='usuario')],
+    [sg.Text('Senha')],
+    [sg.Input(key='senha')],
+    [sg.Button('login')],
+    [sg.Text('',key='mensagem')],
 ]
- # janela
-janela = sg.Window('Tela de Login', layout)
- # ler os eventos
+
+window = sg.Window('login', layout=layout)
+
 while True:
-    eventos , valores = janela.read()
-    if eventos == sg.WINDOW_CLOSED:
+    eventos, valores = window.read()
+    if eventos == sg.WIN_CLOSED:
         break
-    if eventos == 'Entrar':
-        if valores['usuario'] == 'henrique' and valores['senha'] =='123456':
-         print('Bem vindo')
+    elif eventos == 'login':
+        senha_correta = '123456'
+        usuario_correto = 'henrique'
+        usuario = valores ['usuario']
+        senha = valores ['senha']
+        if senha == senha_correta and usuario == usuario_correto:
+            window['mensagem'].update('Login feito com sucesso !')
+        else:
+            window['mensagem'].update('Login e senha incorretos !')
